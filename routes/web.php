@@ -15,7 +15,7 @@ use App\Http\Controllers\WatchListController;
 |
 */
 
-Route::get('/', [MovieController::class, 'index'])->middleware(['auth'])->name('home');
+Route::get('/', [MovieController::class, 'index'])->middleware(['auth'])->middleware(['cors'])->name('home');
 Route::get('/watchlist', [WatchListController::class, 'index'])->middleware(['auth'])->name('watchlist');
 
 require __DIR__.'/auth.php';
