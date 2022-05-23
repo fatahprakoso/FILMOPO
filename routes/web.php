@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MovieController;
+use App\Http\Controllers\WatchListController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,12 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::get('/', [MovieController::class, 'index'])->middleware(['auth'])->name('home');
+Route::get('/watchlist', [WatchListController::class, 'index'])->middleware(['auth'])->name('watchlist');
 
 require __DIR__.'/auth.php';
