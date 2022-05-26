@@ -18,9 +18,9 @@
 
 <body>
     <header class="fixed-top">
-        <nav class="navbar bg-dark">
+        <nav class="navbar" style="background-color: #ECB365;">
             <div class="container-fluid">
-                <a class="navbar-brand ms-3" href="{{ route('home') }}" style="font-weight: 900">FILMOPO</a>
+                <a class="navbar-brand ms-3" href="{{ route('home') }}" style="font-weight: 900; color: #000; font-size: 1.2vw; letter-spacing: 0.6vw;">FILMOPO</a>
                 <form role="search" onsubmit="event.preventDefault();">
                     @csrf
                     <input required class=" form-control me-2 input-search" type="search" name="search"

@@ -40,13 +40,20 @@
 
         async function getMoviesId() {
             const title = `{{ $search }}`;
-            console.log(title);
-            const id = await fetch(`https://www.omdbapi.com/?apikey=b206be1f&s=${title}&type=movie`)
-                .then(r => r.json()).then(r => console.log(r))
+            console.log(title + "gell");
+            const result = []
+            const movies = await fetch(`https://www.omdbapi.com/?apikey=b206be1f&s=${title}&type=movie`)
+                .then(r => r.json())
                 .catch((e) => console.log(e))
                 .finally(() => console.log('finally'));
+            
+            movies.Search.forEach(movie => {
+                result.push(movie.imdbID)
+            });
+
+            return result;
         }
 
-        getMoviesId()
+        getMoviesId().then(r => insertCards(r));
     </script>
 @endsection
