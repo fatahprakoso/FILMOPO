@@ -23,6 +23,7 @@ Route::middleware('auth')->group(function () {
   Route::get('/', [MovieController::class, 'index'])->middleware(['cors'])->name('home');
   Route::get('/search/{title}', [MovieController::class, 'show'])->middleware(['cors'])->name('movie');
   Route::get('/watchlist', [WatchListController::class, 'index'])->name('watchlist');
+  Route::post('/watchlist', [WatchListController::class, 'store'])->name('watchlist.store');
 });
 
 require __DIR__ . '/auth.php';

@@ -23,9 +23,7 @@
                 <a class="navbar-brand ms-3" href="{{ route('home') }}" style="font-weight: 900; color: #000; font-size: 1.2vw; letter-spacing: 0.6vw;">FILMOPO</a>
                 <form role="search" onsubmit="event.preventDefault();">
                     @csrf
-                    <input required class=" form-control me-2 input-search" type="search" name="search"
-                        placeholder="Interstellar, Hereditary, La La Land, ..." aria-label="Search"
-                        style="width: 32.75vw" />
+                    <input required class=" form-control me-2 input-search" type="search" name="search" placeholder="Interstellar, Hereditary, La La Land, ..." aria-label="Search" style="width: 32.75vw" />
                     <script>
                         document.querySelector('.input-search').addEventListener('keyup', function(e) {
                             if (e.keyCode === 13) {
@@ -34,24 +32,20 @@
                         });
                     </script>
                 </form>
-                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
-                    aria-controls="offcanvasNavbar">
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
-                    aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
                     <div class="offcanvas-header">
                         <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
-                            aria-label="Close"></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
                     <div class="offcanvas-body">
                         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                             @if ($route == 'movies')
-                                <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page"
-                                        href="{{ route('watchlist') }}">Watchlists</a>
-                                </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="{{ route('watchlist') }}">Watchlists</a>
+                            </li>
                             @endif
                             <li class="nav-item">
                                 <form method="POST" action="{{ route('logout') }}">
@@ -70,6 +64,14 @@
             </div>
         </nav>
     </header>
+
+    <div class="background"></div>
+
+    <style>
+        body {
+            background-color: #041C32;
+        }
+    </style>
 
     @yield('app')
 </body>

@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\WatchList;
+use App\Models\Movie;
+use App\Models\Actor;
+use App\Models\Genre;
+use App\Models\MovieActor;
+use App\Models\MovieGenre;
 use Illuminate\Http\Request;
 
 class WatchListController extends Controller
@@ -37,7 +42,18 @@ class WatchListController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // echo "sdfsdf";
+        $validateData = $request->validate([
+            'title' => 'required|max:250',
+        ]);
+
+        $tes = explode(',',$request->actors);
+        print_r($tes);
+        // return $request;
+        // return view('main.watchlist.index', [
+        //     'route' => 'watchlist'
+            
+        // ]);
     }
 
     /**
@@ -48,6 +64,7 @@ class WatchListController extends Controller
      */
     public function show(WatchList $watchList)
     {
+
     }
 
     /**
