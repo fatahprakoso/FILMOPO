@@ -15,10 +15,13 @@ use App\Http\Controllers\WatchListController;
 |
 */
 
-Route::get('/', [MovieController::class, 'index'])->middleware(['cors'])->name('home');
-Route::get('/watchlist', [WatchListController::class, 'index'])->middleware(['auth'])->name('watchlist');
-Route::get('/tes', function () {
-  return view('tes');
+Route::get('/dashboard', function () {
+  return view('dashboard');
+})->name('dashboard')->middleware('auth');
+
+Route::middleware('auth')->group(function () {
+  Route::get('/', [MovieController::class, 'index'])->middleware(['cors'])->name('home');
+  Route::get('/watchlist', [WatchListController::class, 'index'])->name('watchlist');
 });
 
 require __DIR__ . '/auth.php';
