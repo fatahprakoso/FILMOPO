@@ -15,12 +15,13 @@ use App\Http\Controllers\WatchListController;
 |
 */
 
-Route::get('/dashboard', function () {
-  return view('dashboard');
-})->name('dashboard')->middleware('auth');
+// Route::get('/dashboard', function () {
+//   return view('dashboard');
+// })->name('dashboard')->middleware('auth');
 
 Route::middleware('auth')->group(function () {
   Route::get('/', [MovieController::class, 'index'])->middleware(['cors'])->name('home');
+  // Route::get('/{imdbid}', [MovieController::class, 'show'])->middleware(['cors'])->name('movie');
   Route::get('/watchlist', [WatchListController::class, 'index'])->name('watchlist');
 });
 

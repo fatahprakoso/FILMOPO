@@ -16,7 +16,6 @@ class MovieController extends Controller
     {
         return view('main.movies.index', [
             'route' => 'movies',
-            'movies' => "Kelompok Pemweb"
         ]);
     }
 
@@ -49,7 +48,10 @@ class MovieController extends Controller
      */
     public function show(Movie $movie)
     {
-        //
+        return view('main.movies.show', [
+            'route' => 'movies',
+            'search' => $movie->title,
+        ]);
     }
 
     /**
