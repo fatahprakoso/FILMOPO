@@ -14,8 +14,6 @@ return new class extends Migration
     public function up()
     {
         Schema::create('movie_actors', function (Blueprint $table) {
-            // $table->id();
-            // $table->timestamps();
             $table->unsignedBigInteger('movie_id');
             $table->unsignedBigInteger('actor_id');
             $table->foreign('movie_id')->references('movie_id')->on('movies')->onDelete('cascade');
