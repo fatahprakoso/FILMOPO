@@ -21,7 +21,7 @@ use App\Http\Controllers\WatchListController;
 
 Route::middleware('auth')->group(function () {
   Route::get('/', [MovieController::class, 'index'])->middleware(['cors'])->name('home');
-  // Route::get('/{imdbid}', [MovieController::class, 'show'])->middleware(['cors'])->name('movie');
+  Route::get('/search/{title}', [MovieController::class, 'show'])->middleware(['cors'])->name('movie');
   Route::get('/watchlist', [WatchListController::class, 'index'])->name('watchlist');
 });
 

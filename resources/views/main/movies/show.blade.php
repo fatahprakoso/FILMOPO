@@ -2,7 +2,6 @@
 
 @section('app')
     <x-card-container></x-card-container>
-
     <script>
         const container = document.querySelector('.card-container');
         async function generateCard(id) {
@@ -39,9 +38,15 @@
             });
         }
 
-        insertCards(['tt4154756', 'tt4154664', 'tt1201607', 'tt3874544', 'tt0816692', 'tt2911666', 'tt6921996',
-            'tt2375379', 'tt1055369', 'tt2302755', 'tt0499549', 'tt0441773', 'tt1220719', 'tt3783958',
-            'tt1229238'
-        ])
+        async function getMoviesId() {
+            const title = `{{ $search }}`;
+            console.log(title);
+            const id = await fetch(`https://www.omdbapi.com/?apikey=b206be1f&s=${title}&type=movie`)
+                .then(r => r.json()).then(r => console.log(r))
+                .catch((e) => console.log(e))
+                .finally(() => console.log('finally'));
+        }
+
+        getMoviesId()
     </script>
 @endsection

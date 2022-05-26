@@ -46,11 +46,11 @@ class MovieController extends Controller
      * @param  \App\Models\Movie  $movie
      * @return \Illuminate\Http\Response
      */
-    public function show(Movie $movie)
+    public function show($title)
     {
         return view('main.movies.show', [
             'route' => 'movies',
-            'search' => $movie->title,
+            'search' => $title,
         ]);
     }
 

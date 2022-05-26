@@ -21,9 +21,18 @@
         <nav class="navbar bg-dark">
             <div class="container-fluid">
                 <a class="navbar-brand ms-3" href="{{ route('home') }}" style="font-weight: 900">FILMOPO</a>
-                <form role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+                <form role="search" onsubmit="event.preventDefault();">
+                    @csrf
+                    <input required class=" form-control me-2 input-search" type="search" name="search"
+                        placeholder="Interstellar, Hereditary, La La Land, ..." aria-label="Search"
                         style="width: 32.75vw" />
+                    <script>
+                        document.querySelector('.input-search').addEventListener('keyup', function(e) {
+                            if (e.keyCode === 13) {
+                                window.location.href = `/search/${this.value}`;
+                            }
+                        });
+                    </script>
                 </form>
                 <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
                     aria-controls="offcanvasNavbar">
