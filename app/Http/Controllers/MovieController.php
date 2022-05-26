@@ -14,7 +14,8 @@ class MovieController extends Controller
      */
     public function index()
     {
-        return view('movies.index', [
+        return view('main.movies.index', [
+            'route' => 'movies',
             'movies' => "Kelompok Pemweb"
         ]);
     }

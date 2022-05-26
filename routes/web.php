@@ -15,7 +15,7 @@ use App\Http\Controllers\WatchListController;
 |
 */
 
-Route::get('/', [MovieController::class, 'index'])->middleware(['auth'])->middleware(['cors'])->name('home');
+Route::get('/', [MovieController::class, 'index'])->middleware(['cors'])->name('home');
 Route::get('/watchlist', [WatchListController::class, 'index'])->middleware(['auth'])->name('watchlist');
 Route::get('/tes', function () {
   return view('tes');

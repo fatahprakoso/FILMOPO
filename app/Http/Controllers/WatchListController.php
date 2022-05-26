@@ -14,7 +14,7 @@ class WatchListController extends Controller
      */
     public function index()
     {
-        return view('watchlist.index',[
+        return view('main.watchlist.index', [
             'watchlists' => 'tes123'
         ]);
     }
