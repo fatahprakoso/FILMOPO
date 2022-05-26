@@ -11,6 +11,8 @@ class Genre extends Model
 
     public $timestamps = false;
 
+    protected $guarded = ['genre_id'];
+
     function movieGenre()
     {
         return $this->hasMany('App\Models\MovieGenre');

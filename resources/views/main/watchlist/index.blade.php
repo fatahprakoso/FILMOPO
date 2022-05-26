@@ -10,13 +10,58 @@
 
 <div class="" style="margin-top: 10vh;">
 
-<a href="#"class="block">
+    <div class="container">
+        <div class="image"></div>
+        <div class="overlay">
+            <a href="#" class="icon" title="User Profile"></a>
+        </div>
+    </div>
 
-    <div class="overlay"></div>
+    <style>
+        .container {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+        }
 
-    <img class="plus" src="http://placehold.it/100x100" />
+        .image {
+            display: block;
+            width: 500px;
+            height: 500px;
+        }
 
-</a>
+        .overlay {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            width: 100%;
+            opacity: 0;
+            transition: .3s ease;
+            background-image: url('https://cdn.icon-icons.com/icons2/1946/PNG/512/1904677-add-addition-calculate-charge-create-new-plus_122527.png');
+        }
+
+        .container:hover .overlay {
+            opacity: 1;
+        }
+
+        .icon {
+            color: white;
+            font-size: 100px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .fa-user:hover {
+            color: #eee;
+        }
+    </style>
 
     <div class="d-flex flex-column bd-highlight mb-3">
         <div class="p-2 bd-highlight">

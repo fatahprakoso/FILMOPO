@@ -11,6 +11,8 @@ class Actor extends Model
 
     public $timestamps = false;
 
+    protected $guarded = ['actor_id'];
+
     function movieActor()
     {
         return $this->hasMany('App\Models\MovieActor');

@@ -43,17 +43,54 @@ class WatchListController extends Controller
     public function store(Request $request)
     {
         // echo "sdfsdf";
-        $validateData = $request->validate([
+        $validateDataMovie = $request->validate([
             'title' => 'required|max:250',
+            'rated' => 'max:10',
+            'runtime' => 'max:50',
+            'released' => 'required|max:100',
+            'poster' => 'max:255',
         ]);
 
-        $tes = explode(',',$request->actors);
-        print_r($tes);
-        // return $request;
-        // return view('main.watchlist.index', [
-        //     'route' => 'watchlist'
-            
-        // ]);
+
+        $actors = explode(',',$request->actors);
+        $genres = explode(',',$request->genre);
+
+        // echo $actors[2];
+        // echo Actor::where('name', 'Mark Ruffalo')->first();
+        $tes = $actors[2];
+        if (Actor::where('name', $tes)->first() != null) {
+            echo $tes."(berhasil)";
+        } else {
+            echo $tes."(gagal)";
+        }
+        // foreach ($actors as $key => $value) {
+        //     if (Actor::where('name', $value)->first() == null) {
+        //         $actor_id = Actor::create([
+        //             'name' => $value.'|required|max:50',
+        //         ])->id;
+        //     } else {
+        //         $actor_id = Actor::where('name', $value)->first()->id;
+        //     }
+        // }
+
+        // foreach ($genres as $key => $value) {
+        //     if (Genre::where('name', $value)->first() == null) {
+        //         $genre_id = Genre::create([
+        //             'name' => $value.'|required|max:50',
+        //         ])->id;
+        //     } else {
+        //         $genre_id = Genre::where('name', $value)->first()->id;
+        //     }
+        // }
+
+        // if (Movie::where('name', $request->title)->Where('release_dt', $request->released)->first() == null) {
+        //     $movie_id = Movie::create($validateDataMovie)->id;
+        // } else {
+        //     $movie_id = Movie::where('name', $request->title)->Where('release_dt', $request->released)->first()->id;
+        // }
+
+
+        // return redirect('/watchlist')->with('success', 'Film ditambahkan!');
     }
 
     /**

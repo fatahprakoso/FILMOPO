@@ -11,6 +11,8 @@ class Movie extends Model
 
     public $timestamps = false;
 
+    protected $guarded = ['movie_id'];
+
     function watchList()
     {
         return $this->hasMany(WatchList::class);

@@ -3,6 +3,52 @@
 @section('app')
 <x-card-container></x-card-container>
 
+<style>
+.container {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .image {
+            display: block;
+            width: 500px;
+            height: 500px;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            width: 100%;
+            opacity: 0;
+            transition: .3s ease;
+            background-image: url('https://cdn.icon-icons.com/icons2/1946/PNG/512/1904677-add-addition-calculate-charge-create-new-plus_122527.png');
+        }
+
+        .container:hover .overlay {
+            opacity: 1;
+        }
+
+        .icon {
+            color: white;
+            font-size: 100px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .fa-user:hover {
+            color: #eee;
+        }
+</style>
+
 <script>
     const container = document.querySelector('.card-container');
     async function generateCard(id) {
@@ -13,6 +59,12 @@
 
         let card = `
         <div class="hvr-blur hvr-grow-shadow card d-flex flex-column justify-content-center align-itemns-center" style="width: 20rem; background:#ECB365; margin-bottom: 30px">
+            <div class="container">
+                <div class="image"></div>
+                <div class="overlay">
+                    <a href="#" class="icon" title="User Profile"></a>
+                </div>
+            </div>
             <form method="POST" action="{{route('watchlist')}}" class="hvr-fade position-absolute" style="z-index:10; width:20rem; height:100%; background-color:rgba(51, 51, 51, 0)">
                 @csrf
                 <input type="hidden" name="id" value="${id}">
