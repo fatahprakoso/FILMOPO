@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('actors', function (Blueprint $table) {
             $table->id('actor_id');
-            $table->string('name');
+            $table->string('name')->unique();
         });
     }
 
