@@ -28,7 +28,28 @@
                     </div>
                     <div class="sec-col col-md-7">
                         <div class="card-body">
-                            <h5 class="font-weight-bold card-title" style="font-weight: bold;">Avengers Endgame (2019)</h5>
+                            <div class="d-flex bd-highlight">
+                                <div class="me-auto bd-highlight">
+                                    <h5 class="font-weight-bold card-title" style="font-weight: bold; font-size: 1.6rem;">Avengers Endgame (2019)</h5>
+                                </div>
+
+                                <!-- <div class="bd-highlight">
+                                    <p style="font-style: italic;">4.7</p>
+                                </div> -->
+
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                                    <label class="form-check-label" for="flexSwitchCheckDefault">Watched</label>
+                                </div>
+
+                            </div>
+
+                            <div class="d-flex flex-column bd-highlight mb-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fa fa-car"></i>
+                                <p style="font-style: italic;">4.7</p>
+                            </div>
+
                             <p class="card-text"><small class="text-muted">149 menit</small></p>
                             <div class="d-flex flex-column bd-highlight mb-2">
                                 <div class="p-0 bd-highlight">Actor :</div>
@@ -36,6 +57,7 @@
                                 <div class="p-2 bd-highlight">Chris Hemsworth</div>
                                 <div class="p-2 bd-highlight">Mark Ruffalo</div>
                             </div>
+
                             <div class="container">
                                 <div class="row text-center mx-3 gap-4">
                                     <div class="rounded-pill col bg-dark text-info">
