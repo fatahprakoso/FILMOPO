@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('release_dt', 100);
             $table->string('poster', 255);
             $table->string('rated');
-            $table->index(['name', 'release_dt']);
+            $table->unique(['name', 'release_dt']);
         });
     }
 
