@@ -11,6 +11,8 @@ class MovieGenre extends Model
 
     public $timestamps = false;
 
+    protected $fillable = ['movie_id', 'genre_id'];
+
     function movie()
     {
         return $this->belongsTo('App\Models\Movie');
