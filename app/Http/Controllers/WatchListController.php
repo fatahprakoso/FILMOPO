@@ -42,55 +42,47 @@ class WatchListController extends Controller
      */
     public function store(Request $request)
     {
-        // echo "sdfsdf";
         $validateDataMovie = $request->validate([
-            'title' => 'required|max:250',
+            'name' => 'required|max:250',
             'rated' => 'max:10',
-            'runtime' => 'max:50',
-            'released' => 'required|max:100',
+            'length' => 'max:50',
+            'release_dt' => 'required|max:100',
             'poster' => 'max:255',
         ]);
 
 
-        $actors = explode(',',$request->actors);
-        $genres = explode(',',$request->genre);
+        $actors = explode(', ', $request->actors);
+        $genres = explode(', ', $request->genre);
 
-        // echo $actors[2];
-        // echo Actor::where('name', 'Mark Ruffalo')->first();
-        $tes = $actors[2];
-        if (Actor::where('name', $tes)->first() != null) {
-            echo $tes."(berhasil)";
-        } else {
-            echo $tes."(gagal)";
+
+        foreach ($actors as $key => $value) {
+            if (Actor::where('name', $value)->first() == null) {
+                Actor::create([
+                    'name' => $value
+                ]);
+            } else {
+                Actor::where('name', $value)->first();
+            }
         }
-        // foreach ($actors as $key => $value) {
-        //     if (Actor::where('name', $value)->first() == null) {
-        //         $actor_id = Actor::create([
-        //             'name' => $value.'|required|max:50',
-        //         ])->id;
-        //     } else {
-        //         $actor_id = Actor::where('name', $value)->first()->id;
-        //     }
-        // }
 
-        // foreach ($genres as $key => $value) {
-        //     if (Genre::where('name', $value)->first() == null) {
-        //         $genre_id = Genre::create([
-        //             'name' => $value.'|required|max:50',
-        //         ])->id;
-        //     } else {
-        //         $genre_id = Genre::where('name', $value)->first()->id;
-        //     }
-        // }
+        foreach ($genres as $key => $value) {
+            if (Genre::where('name', $value)->first() == null) {
+                Genre::create([
+                    'name' => $value
+                ]);
+            } else {
+                Genre::where('name', $value)->first();
+            }
+        }
 
-        // if (Movie::where('name', $request->title)->Where('release_dt', $request->released)->first() == null) {
-        //     $movie_id = Movie::create($validateDataMovie)->id;
-        // } else {
-        //     $movie_id = Movie::where('name', $request->title)->Where('release_dt', $request->released)->first()->id;
-        // }
+        if (Movie::where('name', $request->name)->where('release_dt', $request->release_dt)->first() == null) {
+            Movie::create($validateDataMovie);
+        } else {
+            Movie::where('name', $request->title)->where('release_dt', $request->released)->first();
+        }
 
 
-        // return redirect('/watchlist')->with('success', 'Film ditambahkan!');
+        return redirect('/watchlist')->with('success', 'Film ditambahkan!');
     }
 
     /**
@@ -101,7 +93,6 @@ class WatchListController extends Controller
      */
     public function show(WatchList $watchList)
     {
-
     }
 
     /**
