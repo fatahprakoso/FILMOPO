@@ -12,7 +12,7 @@
 
         console.log(c);
         let card = `
-        <div class="hvr-blur hvr-grow-shadow card d-flex flex-column justify-content-center align-itemns-center" style="width: 20rem; background:green; margin-bottom: 30px">
+        <div class="hvr-blur hvr-grow-shadow card d-flex flex-column justify-content-center align-itemns-center" style=" background-color:#ECB365; margin-bottom: 30px">
             <div class="hvr-fade position-absolute" style="z-index:10; width:20rem; height:100%"></div>
             <img class="card-img-top" style="object-fit: cover;  height: 30rem; width: 20rem" src="${c.Poster}" alt="Card image cap">
             <div class="card-body">

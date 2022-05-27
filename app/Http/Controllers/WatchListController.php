@@ -42,6 +42,7 @@ class WatchListController extends Controller
      */
     public function store(Request $request)
     {
+        // validating the request
         $validateDataMovie = $request->validate([
             'name' => 'required|max:250',
             'rated' => 'max:10',
@@ -50,39 +51,77 @@ class WatchListController extends Controller
             'poster' => 'max:255',
         ]);
 
+        $msg = "Film $request->name berhasil ditambahkan!";
 
-        $actors = explode(', ', $request->actors);
-        $genres = explode(', ', $request->genre);
-
-
-        foreach ($actors as $key => $value) {
-            if (Actor::where('name', $value)->first() == null) {
-                Actor::create([
-                    'name' => $value
-                ]);
-            } else {
-                Actor::where('name', $value)->first();
-            }
-        }
-
-        foreach ($genres as $key => $value) {
-            if (Genre::where('name', $value)->first() == null) {
-                Genre::create([
-                    'name' => $value
-                ]);
-            } else {
-                Genre::where('name', $value)->first();
-            }
-        }
-
+        // creating the movie if it doesn't exist
         if (Movie::where('name', $request->name)->where('release_dt', $request->release_dt)->first() == null) {
-            Movie::create($validateDataMovie);
+            $movie_id = Movie::create($validateDataMovie)->id;
+
+            $actors = explode(', ', $request->actors);
+            $genres = explode(', ', $request->genre);
+
+            $actors_id = array();
+            $genres_id = array();
+
+            foreach ($actors as $key => $value) {
+                if (Actor::where('name', $value)->first() == null) {
+                    $id = Actor::create([
+                        'name' => $value
+                    ])->id;
+                    array_push($actors_id, $id);
+                } else {
+                    $id = Actor::where('name', $value)->first()['actor_id'];
+                    array_push($actors_id, $id);
+                }
+            }
+
+            foreach ($genres as $key => $value) {
+                if (Genre::where('name', $value)->first() == null) {
+                    $id = Genre::create([
+                        'name' => $value
+                    ])->id;
+                    array_push($genres_id, $id);
+                } else {
+                    $id = Genre::where('name', $value)->first()['genre_id'];
+                    array_push($genres_id, $id);
+                }
+            }
+
+            foreach ($actors_id as $key => $actor_id) {
+                if (MovieActor::where('movie_id', $movie_id)->where('actor_id', $actor_id)->first() == null) {
+                    MovieActor::create([
+                        'movie_id' => $movie_id,
+                        'actor_id' => $actor_id
+                    ]);
+                }
+            }
+
+            foreach ($genres_id as $key => $genre_id) {
+                if (MovieGenre::where('movie_id', $movie_id)->where('genre_id', $genre_id)->first() == null) {
+                    MovieGenre::create([
+                        'movie_id' => $movie_id,
+                        'genre_id' => $genre_id
+                    ]);
+                }
+            }
         } else {
-            Movie::where('name', $request->title)->where('release_dt', $request->released)->first();
+            $movie_id = Movie::where('name', $request->name)->where('release_dt', $request->release_dt)->first()['movie_id'];
         }
 
+        // getting the logged user id
+        $user_id = auth()->user()->id;
 
-        return redirect('/watchlist')->with('success', 'Film ditambahkan!');
+        // creating the watchlist if it doesn't exist
+        if (WatchList::where('user_id', $user_id)->where('movie_id', $movie_id)->first() == null) {
+            WatchList::create([
+                'user_id' => $user_id,
+                'movie_id' => $movie_id
+            ]);
+        } else {
+            $msg = "Film $request->name sudah ada di watchlist!";
+        }
+
+        return redirect('/watchlist')->with('success', $msg);
     }
 
     /**

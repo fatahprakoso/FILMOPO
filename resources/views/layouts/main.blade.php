@@ -20,7 +20,7 @@
     <header class="fixed-top">
         <nav class="navbar" style="background-color: #ECB365;">
             <div class="container-fluid">
-                <a class="navbar-brand ms-3" href="{{ route('home') }}" style="font-weight: 900; color: #000; font-size: 1.2vw; letter-spacing: 0.6vw;">FILMOPO</a>
+                <a class="navbar-brand ms-3" href="{{ route('home') }}" style="font-weight: 900; color: #000; font-size: 1.75rem; letter-spacing: 0.6vw; font-family: 'Bebas Neue', cursive;"> <spin>FILM</spin><spin style="color: red;">OPO</spin> </a>
                 <form role="search" onsubmit="event.preventDefault();">
                     @csrf
                     <input required class=" form-control me-2 input-search" type="search" name="search" placeholder="Interstellar, Hereditary, La La Land, ..." aria-label="Search" style="width: 32.75vw" />

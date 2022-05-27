@@ -12,7 +12,7 @@
                 .finally(() => console.log('finally'));
 
             let card =
-                `<x-card id="${id}" : title="${c.Title}" : rated="${c.Rated}" : runtime="${c.Runtime}" : released="${c.Released}" : poster="${c.Poster}" : actors="${c.Actors}" : genre="${c.Genre}">
+                `<x-card id="${id}" : title="${c.Title}" : rated="${c.Rated}" : runtime="${c.Runtime}" : released="${c.Released}" : poster="${c.Poster}" : actors="'${c.Actors}'" : genre="'${c.Genre}'">
 
                     <x-slot name="titleCutted"> ${c.Title.length > 30? `${c.Title.substring(0, 27)}...` : c.Title} </x-slot>
 
