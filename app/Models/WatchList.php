@@ -11,6 +11,8 @@ class WatchList extends Model
 
     public $timestamps = false;
 
+    protected $fillable = ['movie_id', 'user_id'];
+
     function user()
     {
         return $this->belongsTo('App\Models\User');

@@ -14,15 +14,12 @@ class Card extends Component
     public $poster;
     public $actors;
     public $genre;
-    public $titleCutted;
-    public $actorsCutted;
-    public $genreCutted;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($id, $title, $rated, $runtime, $released, $poster)
+    public function __construct($id, $title, $rated, $runtime, $released, $poster, $actors, $genre)
     {
         $this->id = $id;
         $this->title = $title;
@@ -30,6 +27,8 @@ class Card extends Component
         $this->runtime = $runtime;
         $this->released = $released;
         $this->poster = $poster;
+        $this->actors = $actors;
+        $this->genre = $genre;
     }
 
     /**
