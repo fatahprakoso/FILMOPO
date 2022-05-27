@@ -35,16 +35,16 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas offcanvas-end" style="background-color: #041C32;" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
                     <div class="offcanvas-header">
-                        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                        <h5 class="offcanvas-title" id="offcanvasNavbarLabel" style="font-size: 2.6rem; color: white; font-weight: 900;">Menu</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close""></button>
                     </div>
                     <div class="offcanvas-body">
                         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                             @if ($route == 'movies')
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="{{ route('watchlist') }}">Watchlists</a>
+                                <a class="nav-link active" aria-current="page" href="{{ route('watchlist') }}" style="font-size: 1.4rem; color: white;">Watchlists</a>
                             </li>
                             @endif
                             <li class="nav-item">
