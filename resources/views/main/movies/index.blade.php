@@ -9,6 +9,12 @@
             transition: 1s;
         }
 
+        .container {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+        }
+
         .card form button img {
             opacity: 0;
             position: absolute;
