@@ -11,6 +11,8 @@ class MovieActor extends Model
 
     public $timestamps = false;
 
+    protected $fillable = ['movie_id', 'actor_id'];
+
     function movie()
     {
         return $this->belongsTo(Movie::class);
