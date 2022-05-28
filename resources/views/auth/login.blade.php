@@ -84,9 +84,8 @@
                                             <!-- Email Address -->
                                             <div class="mt-3">
                                                 <div class="input-group">
-                                                    <x-input id="email" class="form-control" type="email"
-                                                        aria-label="Username" aria-describedby="basic-addon1"
-                                                        placeholder="email" name="email" :value="old('email')" required
+                                                    <x-input id="email" class="block mt-1 w-full form-control"
+                                                        type="email" name="email" :value="old('email')" required
                                                         autofocus />
                                                 </div>
                                             </div>
@@ -95,10 +94,9 @@
                                             <!-- Password -->
                                             <div class="mt-4">
                                                 <div class="input-group">
-                                                    <x-input id="password" class="form-control" type="password"
-                                                        name="password" aria-label="Username"
-                                                        aria-describedby="basic-addon1" placeholder="password"
-                                                        name="email" required autocomplete="current-password" />
+                                                    <x-input id="password" class="form-control block mt-1 w-full"
+                                                        type="password" name="password" required
+                                                        autocomplete="current-password" />
                                                 </div>
                                             </div>
                                             <x-label for="password" :value="__('Password')" />
