@@ -19,43 +19,45 @@
 
 <div class="" style="margin-top: 12vh;">
 
-    <div class="d-flex flex-column bd-highlight mb-3" style="margin-left: 10rem;">
+    <div class="d-flex flex-column bd-highlight mb-3">
         <div class="p-2 bd-highlight">
-            <div class="card mb-3" style="max-width: 1000px;">
+            <div class="card mb-3" style="max-width: 1350px; margin: 0 auto; float: none; margin-bottom: 10px;">
                 <div class="row g-0">
                     <div class="first-col col-md-4 bg-warning">
                         <img src="..." class="img-fluid rounded-start" alt="...">
                     </div>
                     <div class="sec-col col-md-7">
                         <div class="card-body">
+
                             <div class="d-flex bd-highlight">
                                 <div class="me-auto bd-highlight">
                                     <h5 class="font-weight-bold card-title" style="font-weight: bold; font-size: 1.6rem;">Avengers Endgame (2019)</h5>
                                 </div>
-
-                                <!-- <div class="bd-highlight">
-                                    <p style="font-style: italic;">4.7</p>
-                                </div> -->
-
                                 <div class="form-check form-switch">
                                     <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
                                     <label class="form-check-label" for="flexSwitchCheckDefault">Watched</label>
                                 </div>
-
                             </div>
 
-                            <div class="d-flex flex-column bd-highlight mb-2">
-                            <i class="fas fa-star"></i>
-                            <i class="fa fa-car"></i>
-                                <p style="font-style: italic;">4.7</p>
-                            </div>
-
-                            <p class="card-text"><small class="text-muted">149 menit</small></p>
-                            <div class="d-flex flex-column bd-highlight mb-2">
-                                <div class="p-0 bd-highlight">Actor :</div>
-                                <div class="p-2 bd-highlight">Robert Downey Jr.</div>
-                                <div class="p-2 bd-highlight">Chris Hemsworth</div>
-                                <div class="p-2 bd-highlight">Mark Ruffalo</div>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-9">
+                                        <p class="card-text mb-2"><small class="text-muted">149 menit</small></p>
+                                        <div class="d-flex flex-column bd-highlight">
+                                            <div class="p-0 bd-highlight">Actor :</div>
+                                            <div class="p-2 bd-highlight">Robert Downey Jr.</div>
+                                            <div class="p-2 bd-highlight">Chris Hemsworth</div>
+                                            <div class="p-2 bd-highlight">Mark Ruffalo</div>
+                                        </div>
+                                    </div>
+                                    <div class="col justify-content-end align-self-center">
+                                        <div class="d-flex justify-content-center align-items-center" style="background-color: red; border-radius: 50%; width:100px; height:100px">
+                                            <p style="color:white; font-style: italic; font-size: 1.8rem; font-weight: 900" class="mb-0">PG-13</p>
+                                        </div>
+                                    </div>
+    
+    
+                                </div>
                             </div>
 
                             <div class="container">
@@ -71,28 +73,13 @@
                                     </div>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                     <div class="third-col col-md-1 bg-danger">
                         <button class="btn d-flex flex-column justify-content-center align-items-center" style="z-index:2; height:100%; width:100%;">
                             <img class="img-fluid" style="width: 40px; height: 40px;" alt="trash" src="{{asset('icon_trash-bin.png')}}">
                         </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="p-2 bd-highlight">
-            <div class="card mb-3" style="max-width: 540px;">
-                <div class="row g-0">
-                    <div class="col-md-4">
-                        <img src="..." class="img-fluid rounded-start" alt="...">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                        </div>
                     </div>
                 </div>
             </div>

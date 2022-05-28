@@ -12,18 +12,17 @@
 
         console.log(c);
         let card = `
-        <div class="hvr-blur hvr-grow-shadow card d-flex flex-column justify-content-center align-itemns-center" style=" background-color:#ECB365; margin-bottom: 30px">
-            <div class="hvr-fade position-absolute" style="z-index:10; width:20rem; height:100%"></div>
-            <img class="card-img-top" style="object-fit: cover;  height: 30rem; width: 20rem" src="${c.Poster}" alt="Card image cap">
-            <div class="card-body">
-                <h5 style="font-weight: bold;">${c.Title.length > 30? `${c.Title.substring(0, 27)}...` : c.Title} </h5>
-                <h6>${c.Year}</h6>
-            </div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">${c.Actors.length > 37? `${c.Actors.substring(0, 27)}...` : c.Actors}</li>
-                <li class="list-group-item">${c.Genre.length > 37? `${c.Genre.substring(0, 27)}...` : c.Genre}</li>
-            </ul>
-        </div>
+            <x-card id="${id}" : title="${c.Title}" : rated="${c.Rated}" : runtime="${c.Runtime}" : released="${c.Released}" : poster="${c.Poster}" : actors="'${c.Actors}'" : genre="'${c.Genre}'">
+                <x-slot name="titleCutted"> ${c.Title.length > 30? `${c.Title.substring(0, 27)}...` : c.Title} </x-slot>
+
+                <x-slot name="actorsCutted">
+                    ${c.Actors.length > 37? `${c.Actors.substring(0, 27)}...` : c.Actors}
+                </x-slot>
+
+                <x-slot name="genreCutted">
+                    ${c.Genre.length > 37? `${c.Genre.substring(0, 27)}...` : c.Genre}
+                </x-slot>
+            </x-card>
         `;
 
         return card

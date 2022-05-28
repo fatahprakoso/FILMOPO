@@ -52,7 +52,7 @@
     }
 </style>
 
-<div class="hvr-grow-shadow card d-flex flex-column justify-content-center align-itemns-center" style="background-color:#ECB365; margin-bottom: 30px">
+<div class="hvr-grow-shadow card d-flex flex-column justify-content-center align-itemns-center" style="background-color:#ECB365; margin-bottom: 30px; width: calc(200px + 10vw)">
     <form method="POST" action="{{ route('watchlist') }}">
         @csrf
         <input type="hidden" name="id" value="{{ $id }}">
@@ -69,7 +69,13 @@
             <div class="overlay"></div>
         </button>
     </form>
-    <img class="card-img-top movie-poster" style="object-fit: cover;  height: 30rem" src="{{ $poster }}" alt="Card image cap">
+
+    {{-- @if ($poster == "N/A") --}}
+        {{-- <img class="card-img-top movie-poster" src="{{asset('poster_money-heist.jpg')}}" alt="poster" style="object-fit: cover;  height: 30rem"> --}}
+    {{-- @else --}}
+        <img class="card-img-top movie-poster" style="object-fit: cover;  height: 30rem" src="{{ $poster }}" alt="Card image cap">
+    {{-- @endif --}}
+
     <div class="card-body movie-title">
         <h5 style="font-weight: bold;">
             {{ $titleCutted }}
