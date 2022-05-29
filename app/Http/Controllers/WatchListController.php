@@ -43,8 +43,8 @@ class WatchListController extends Controller
                 'release_dt' => $value->release_dt,
                 'poster' => $value->poster,
                 'rated' => $value->rated,
-                'genre' => $genres_data,
-                'actor' => $actors_data
+                'genres' => $genres_data,
+                'actors' => $actors_data
             ]);
         }
         

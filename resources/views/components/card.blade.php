@@ -70,12 +70,7 @@
         </button>
     </form>
 
-    {{var_dump($poster)}}
-    @if ($poster == null)
-        {{-- <img class="card-img-top movie-poster" src="{{asset('poster_no-data-found.png')}}" alt="poster" style="object-fit: cover;  height: 30rem"> --}}
-    @else
-        <img class="card-img-top movie-poster" style="object-fit: cover;  height: 30rem" src="{{ $poster }}" alt="Card image cap">
-    @endif
+    <img class="card-img-top movie-poster" style="object-fit: cover;  height: 30rem" src="{{ $poster }}" alt="Card image cap" onerror="this.onerror=null;this.src='https://i.pinimg.com/originals/49/e5/8d/49e58d5922019b8ec4642a2e2b9291c2.png';"/>
 
     <div class="card-body movie-title">
         <h5 style="font-weight: bold;">
