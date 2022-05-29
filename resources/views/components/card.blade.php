@@ -50,9 +50,11 @@
         filter: blur(2px);
         transition: 0.5s;
     }
+
 </style>
 
-<div class="hvr-grow-shadow card d-flex flex-column justify-content-center align-itemns-center" style="background-color:#ECB365; margin-bottom: 30px; width: calc(200px + 10vw)">
+<div class="hvr-grow-shadow card d-flex flex-column justify-content-center align-itemns-center"
+    style="background-color:#ECB365; margin-bottom: 30px; width: calc(200px + 10vw)">
     <form method="POST" action="{{ route('watchlist') }}">
         @csrf
         <input type="hidden" name="id" value="{{ $id }}">
@@ -63,14 +65,18 @@
         <input type="hidden" name="poster" value="{{ $poster }}">
         <input type="hidden" name="actors" value="{{ $actors }}">
         <input type="hidden" name="genre" value="{{ $genre }}">
-        <button type="submit" class="btn d-flex flex-column justify-content-center align-items-center" style="position:absolute; z-index:2; height:100%; width:100%;">
-            <img class="add-icon mb-5" src="{{asset('icon_plus.png')}}" alt="add" style="width: 125px; height: 125px; object-fit: cover; object-position: center; box-shadow:0 0 10px #000; border-radius: 25px;">
+        <button type="submit" class="btn d-flex flex-column justify-content-center align-items-center"
+            style="position:absolute; z-index:2; height:100%; width:100%;">
+            <img class="add-icon mb-5" src="{{ asset('icon_plus.png') }}" alt="add"
+                style="width: 125px; height: 125px; object-fit: cover; object-position: center; box-shadow:0 0 10px #000; border-radius: 25px;">
             <p class="mt-5" style="color: white;">Tambahkan film ke watchlist</p>
             <div class="overlay"></div>
         </button>
     </form>
 
-    <img class="card-img-top movie-poster" style="object-fit: cover;  height: 30rem" src="{{ $poster }}" alt="Card image cap" onerror="this.onerror=null;this.src='https://i.pinimg.com/originals/49/e5/8d/49e58d5922019b8ec4642a2e2b9291c2.png';"/>
+    <img class="card-img-top movie-poster" style="object-fit: cover; height: 30rem" src="{{ $poster }}"
+        alt="Card image cap"
+        onerror="this.onerror=null;this.src='https://i.pinimg.com/originals/49/e5/8d/49e58d5922019b8ec4642a2e2b9291c2.png';" />
 
     <div class="card-body movie-title">
         <h5 style="font-weight: bold;">

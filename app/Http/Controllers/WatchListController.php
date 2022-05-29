@@ -7,6 +7,7 @@ use App\Models\Actor;
 use App\Models\Genre;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class WatchListController extends Controller
 {
@@ -47,7 +48,7 @@ class WatchListController extends Controller
                 'actors' => $actors_data
             ]);
         }
-        
+
         return view('main.watchlist.index', [
             'route' => 'watchlist',
             'movies' => $movies_data
@@ -112,5 +113,33 @@ class WatchListController extends Controller
 
         $msg = "Film $request->name berhasil ditambahkan!";
         return redirect('/watchlist')->with('success', $msg);
+    }
+
+    public function destroy($request)
+    {
+        $movie = Movie::find($request->id);
+        $movie->user()->detach(auth()->user()->id);
+
+        foreach ($movie->user as $user) {
+            if ($user->pivot->movie_id == $movie->movie_id) {
+                $msg = "Film $movie->name gagal dihapus!";
+                return redirect()->back()->with('msg', $msg);
+            }
+        }
+
+        $msg = "Film $movie->name berhasil dihapus!";
+        return redirect('/watchlist')->with('success', $msg);
+    }
+
+    public function update(Movie $movie, Request $request)
+    {
+        $movie_id = $movie->movie_id;
+        $user_id = auth()->user()->id;
+        $status = $request->status;
+
+        return DB::update(
+            'update watchlist set watched = ? where movie_id = ? and user_id = ?',
+            [$status, $movie_id, $user_id]
+        );
     }
 }

@@ -24,6 +24,8 @@ Route::middleware('auth')->group(function () {
   Route::get('/search/{title}', [MovieController::class, 'show'])->middleware(['cors'])->name('movie');
   Route::get('/watchlist', [WatchListController::class, 'index'])->name('watchlist');
   Route::post('/watchlist', [WatchListController::class, 'store'])->name('watchlist.store');
+  Route::delete('/watchlist', [WatchListController::class, 'destroy'])->name('watchlist.destroy');
+  Route::put('/watchlist/{$movie}', [WatchListController::class, 'update'])->name('watchlist.update');
 });
 
 require __DIR__ . '/auth.php';
