@@ -19,49 +19,5 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // Actor
-        Actor::create([
-            'name' => 'Robert Downey Jr.',
-        ]);
-        Actor::create([
-            'name' => 'Chris Hemsworth',
-        ]);
-        Actor::create([
-            'name' => 'Mark Ruffalo',
-        ]);
-
-        // Genre
-        Genre::create([
-            'name' => 'Action',
-        ]);
-        Genre::create([
-            'name' => 'Adventure',
-        ]);
-        Genre::create([
-            'name' => 'Sci-Fi',
-        ]);
-
-        Movie::create([
-            'name' => 'Avengers: Infinity War',
-            'length' => '149 min',
-            'release_dt' => '27 Apr 2018',
-            'poster' => 'https://m.media-amazon.com/images/M/MV5BMjMxNjY2MDU1OV5BMl5BanBnXkFtZTgwNzY1MTUwNTM@._V1_SX300.jpg',
-            'rated' => 'PG-13'
-        ]);
-
-        MovieActor::create([
-            'movie_id' => 1,
-            'actor_id' => 1,
-        ]);
-
-        MovieActor::create([
-            'movie_id' => 1,
-            'actor_id' => 2,
-
-        ]);
-        MovieActor::create([
-            'movie_id' => 1,
-            'actor_id' => 3,
-        ]);
     }
 }

@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\WatchList;
 use App\Models\Movie;
 use App\Models\Actor;
 use App\Models\Genre;
-use App\Models\MovieActor;
-use App\Models\MovieGenre;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class WatchListController extends Controller
@@ -19,8 +17,40 @@ class WatchListController extends Controller
      */
     public function index()
     {
+        $movies_data = array();
+        $user = auth()->user();
+        $movies = $user->movie;
+
+        foreach ($movies as $value) {
+            $actors_data = array();
+            $actors = Movie::find($value->movie_id)->actor;
+
+            foreach ($actors as $actor) {
+                array_push($actors_data, $actor->name);
+            }
+
+            $genres_data = array();
+            $genres = Movie::find($value->movie_id)->genre;
+
+            foreach ($genres as $genre) {
+                array_push($genres_data, $genre->name);
+            }
+
+            array_push($movies_data, [
+                'movie_id' => $value->movie_id,
+                'name' => $value->name,
+                'length' => $value->length,
+                'release_dt' => $value->release_dt,
+                'poster' => $value->poster,
+                'rated' => $value->rated,
+                'genre' => $genres_data,
+                'actor' => $actors_data
+            ]);
+        }
+        
         return view('main.watchlist.index', [
-            'route' => 'watchlist'
+            'route' => 'watchlist',
+            'movies' => $movies_data
         ]);
     }
 
@@ -54,7 +84,7 @@ class WatchListController extends Controller
 
         // creating the movie and its actors and genres if they don't exist
         if (Movie::getMovie($request->name, $request->release_dt) == null) {
-            $movie_id = Movie::create($validateDataMovie)->id;
+            $movie_id = Movie::create($validateDataMovie)['movie_id'];
 
             $actors = explode(', ', $request->actors);
             $genres = explode(', ', $request->genre);
@@ -62,8 +92,8 @@ class WatchListController extends Controller
             $actors_id = Actor::addActors($actors);
             $genres_id = Genre::addGenres($genres);
 
-            MovieActor::addMovieActors($movie_id, $actors_id);
-            MovieGenre::addMovieGenres($movie_id, $genres_id);
+            Movie::addMovieActors($movie_id, $actors_id);
+            Movie::addMovieGenres($movie_id, $genres_id);
         } else {
             $movie_id = Movie::getMovie($request->name, $request->release_dt)['movie_id'];
         }
@@ -71,62 +101,16 @@ class WatchListController extends Controller
         // getting the logged user id
         $user_id = auth()->user()->id;
 
-        $msg = "Film $request->name berhasil ditambahkan!";
-
-        // creating the watchlist if it doesn't exist
-        if (WatchList::getWatchList($movie_id, $user_id) == null) {
-            WatchList::create([
-                'user_id' => $user_id,
-                'movie_id' => $movie_id
-            ]);
-        } else {
-            $msg = "Film $request->name sudah ada di watchlist!";
+        foreach (User::find($user_id)->movie as $movie) {
+            if ($movie->pivot->movie_id == $movie_id) {
+                $msg = "Film $request->name sudah ada di watchlist!";
+                return redirect()->back()->with('msg', $msg);
+            }
         }
 
+        User::find($user_id)->movie()->attach($movie_id);
+
+        $msg = "Film $request->name berhasil ditambahkan!";
         return redirect('/watchlist')->with('success', $msg);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\WatchList  $watchList
-     * @return \Illuminate\Http\Response
-     */
-    public function show(WatchList $watchList)
-    {
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\WatchList  $watchList
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(WatchList $watchList)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\WatchList  $watchList
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, WatchList $watchList)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\WatchList  $watchList
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(WatchList $watchList)
-    {
-        //
     }
 }

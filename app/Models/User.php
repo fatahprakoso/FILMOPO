@@ -41,4 +41,19 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    function movie()
+    {
+        return $this->belongsToMany('App\Models\Movie', 'watch_lists', 'user_id', 'movie_id');
+    }
+
+    public static function addMovie($movie_id, $user_id)
+    {
+        User::find($user_id)->movies()->attach($movie_id);
+    }
+
+    public function getWatchList($movie_id)
+    {
+        return $this->movie()->where('movie_id', $movie_id)->first();
+    }
 }
