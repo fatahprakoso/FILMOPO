@@ -23,6 +23,35 @@
             bottom: 0px;
             margin: 10px 0px 10px;
         }
+
+        .main1 {
+            text-align: center;
+        }
+
+        .link1 {
+            display: inline-block;
+        }
+
+        .addText1 {
+            display: inline-block;
+            /* inline-block so we can set a width */
+            width: 0;
+            white-space: nowrap;
+            /* keep text one line */
+            direction: rtl;
+            /* change direction so the text overflow on the left */
+            color: rgba(255, 255, 255, 0);
+            transition: .5s;
+            transform: translateX(0);
+            /* put the value you want here */
+            pointer-events: none;
+            /* to avoid the hover on the text, remove to see the difference */
+        }
+
+        .link1:hover .addText1 {
+            color: red;
+            transform: translateX(45px);
+        }
     </style>
 
 </head>
@@ -46,29 +75,30 @@
                         });
                     </script>
                 </form>
-                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                <button class="navbar-toggler" stype="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="offcanvas offcanvas-end" style="background-color: #041C32;" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-                    <div class="offcanvas-header">
+                    <div class="offcanvas-header" style="padding: 1rem 1.75rem 1rem 1.75rem;">
                         <h5 class="offcanvas-title" id="offcanvasNavbarLabel" style="font-size: 2.6rem; color: white; font-weight: 900;">Menu</h5>
-                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close""></button>
+                        <button class="btn-close btn-close-white" type="button" style="padding-top: -3rem; padding-right: 3.5rem;" data-bs-dismiss="offcanvas" aria-label="Close""></button>
                     </div>
-                    <div class=" offcanvas-body">
+
+                    <div class="offcanvas-body ">
                             <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                                 @if ($route == 'movies')
-                                <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="{{ route('watchlist') }}" style="font-size: 1.4rem; color: white;">Watchlists</a>
+                                <li class="nav-item ">
+                                    <a class="nav-link active" style="padding-left: 1.75rem; font-size: 1.5rem; color: white;" aria-current="page" href="{{ route('watchlist') }}" style="font-size: 1.4rem; color: white;">Watchlists</a>
                                 </li>
                                 @endif
                             </ul>
                     </div>
 
-                    <div id="manipulate nav-item" align="center" style=" padding: 20px 0 20px;">
+                    <div id="manipulate nav-item" align="center" style=" padding: 20px 0 30px;">
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
 
-                            <input class="btn btn-danger" type="submit" value="Logout">
+                            <input class="btn btn-danger" type="submit" value="Logout" style="font-size: 1.3rem;">
                         </form>
                     </div>
 
