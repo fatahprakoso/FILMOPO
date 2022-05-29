@@ -27,4 +27,9 @@ class Movie extends Model
     {
         return $this->hasMany(MovieGenre::class);
     }
+
+    public static function getMovie($name, $release_dt)
+    {
+        return Movie::where('name', $name)->where('release_dt', $release_dt)->first();
+    }
 }

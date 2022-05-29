@@ -22,4 +22,9 @@ class WatchList extends Model
     {
         return $this->belongsTo('App\Models\Movie');
     }
+
+    public static function getWatchList($movie_id, $user_id)
+    {
+        return WatchList::where('movie_id', $movie_id)->where('user_id', $user_id)->first();
+    }
 }
