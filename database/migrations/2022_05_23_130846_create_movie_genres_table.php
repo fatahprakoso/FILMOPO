@@ -18,6 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('genre_id');
             $table->foreign('movie_id')->references('movie_id')->on('movies')->onDelete('cascade');
             $table->foreign('genre_id')->references('genre_id')->on('genres')->onDelete('cascade');
+            $table->unique(['movie_id', 'genre_id']);
         });
     }
 

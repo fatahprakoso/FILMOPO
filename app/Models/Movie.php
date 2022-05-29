@@ -11,25 +11,42 @@ class Movie extends Model
 
     public $timestamps = false;
 
+    protected $primaryKey = 'movie_id';
     protected $guarded = ['movie_id'];
 
-    function watchList()
+    function actor()
     {
-        return $this->hasMany(WatchList::class);
+        return $this->belongsToMany('App\Models\Actor', 'movie_actors', 'movie_id', 'actor_id');
     }
 
-    function movieActor()
+    function genre()
     {
-        return $this->hasMany(MovieActor::class);
+        return $this->belongsToMany('App\Models\Genre', 'movie_genres', 'movie_id', 'genre_id');
     }
 
-    function movieGenre()
+    function user()
     {
-        return $this->hasMany(MovieGenre::class);
+        return $this->belongsToMany('App\Models\User', 'watch_lists', 'movie_id', 'user_id');
     }
 
     public static function getMovie($name, $release_dt)
     {
         return Movie::where('name', $name)->where('release_dt', $release_dt)->first();
+    }
+
+    public static function addMovieActors($movie_id, $actors_id)
+    {
+        $movie = Movie::find($movie_id);
+        foreach ($actors_id as $value) {
+            $movie->actor()->attach($value);
+        }
+    }
+
+    public static function addMovieGenres($movie_id, $genres_id)
+    {
+        $movie = Movie::find($movie_id);
+        foreach ($genres_id as $value) {
+            $movie->genre()->attach($value);
+        }
     }
 }

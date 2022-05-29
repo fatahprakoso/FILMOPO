@@ -11,11 +11,12 @@ class Actor extends Model
 
     public $timestamps = false;
 
+    protected $primaryKey = 'actor_id';
     protected $guarded = ['actor_id'];
 
-    function movieActor()
+    function movie()
     {
-        return $this->hasMany('App\Models\MovieActor');
+        return $this->belongsToMany('App\Models\Movie', 'movie_actors', 'actor_id', 'movie_id');
     }
 
     public static function getActor($name)
@@ -31,7 +32,7 @@ class Actor extends Model
             if (Actor::getActor($value) == null) {
                 $id = Actor::create([
                     'name' => $value
-                ])->id;
+                ])['actor_id'];
                 array_push($actors_id, $id);
             } else {
                 $id = Actor::getActor($value)['actor_id'];
