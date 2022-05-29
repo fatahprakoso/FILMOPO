@@ -115,11 +115,12 @@ class WatchListController extends Controller
         return redirect('/watchlist')->with('success', $msg);
     }
 
-    public function destroy($request)
+    public function delete(Request $request)
     {
         $movie = Movie::find($request->id);
         $movie->user()->detach(auth()->user()->id);
 
+        // echo $movie;
         foreach ($movie->user as $user) {
             if ($user->pivot->movie_id == $movie->movie_id) {
                 $msg = "Film $movie->name gagal dihapus!";
@@ -129,6 +130,23 @@ class WatchListController extends Controller
 
         $msg = "Film $movie->name berhasil dihapus!";
         return redirect('/watchlist')->with('success', $msg);
+    }
+
+    public function destroy($request)
+    {
+        $movie = Movie::find($request->id);
+        $movie->user()->detach(auth()->user()->id);
+
+        echo $movie;
+        foreach ($movie->user as $user) {
+            if ($user->pivot->movie_id == $movie->movie_id) {
+                $msg = "Film $movie->name gagal dihapus!";
+                // return redirect()->back()->with('msg', $msg);
+            }
+        }
+
+        $msg = "Film $movie->name berhasil dihapus!";
+        // return redirect('/watchlist')->with('success', $msg);
     }
 
     public function update(Movie $movie, Request $request)

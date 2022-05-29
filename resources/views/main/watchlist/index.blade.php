@@ -23,4 +23,18 @@
             @endforeach
         </div>
     </div>
+
+    <script>
+        const card = document.querySelectorAll('.card');
+
+        for (let index = 0; index < card.length; index++) {
+            if (index % 2 == 0) {
+                card[index].classList.add('animate__animated');
+                card[index].classList.add('animate__fadeInRightBig');
+            } else {
+                card[index].classList.add('animate__animated');
+                card[index].classList.add('animate__fadeInLeftBig');
+            }
+        }
+    </script>
 @endsection

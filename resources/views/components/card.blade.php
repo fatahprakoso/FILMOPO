@@ -53,7 +53,7 @@
 
 </style>
 
-<div class="hvr-grow-shadow card d-flex flex-column justify-content-center align-itemns-center"
+<div class="animate__animated animate__fadeInUpBig hvr-grow-shadow card d-flex flex-column justify-content-center align-itemns-center"
     style="background-color:#ECB365; margin-bottom: 30px; width: calc(200px + 10vw)">
     <form method="POST" action="{{ route('watchlist') }}">
         @csrf

@@ -47,8 +47,8 @@
                         </div>
                         <div class="col justify-content-end align-self-center">
                             <div class="d-flex justify-content-center align-items-center"
-                                style="background-color: red; border-radius: 50%; width:100px; height:100px">
-                                <p style="color:white; font-style: italic; font-size: 1.8rem; font-weight: 900"
+                                style="background-color: red; border-radius: 50%; width:80px; height:80px">
+                                <p style="color:white; font-style: italic; font-size: 1rem; font-weight: 900"
                                     class="mb-0">{{ $rated }}</p>
                             </div>
                         </div>
@@ -63,7 +63,8 @@
 
             </div>
         </div>
-        <form method="DELETE" action={{ route('watchlist.destroy') }} class="third-col col-md-1 bg-danger">
+        <form method="POST" action={{ route('watchlist.delete') }} class="third-col col-md-1 bg-danger">
+            @csrf
             <input class="id" type="hidden" name="id" value="{{ $movieid }}">
             <button class="btn d-flex flex-column justify-content-center align-items-center del-btn"
                 style="z-index:2; height:100%; width:100%;">
