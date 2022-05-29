@@ -70,11 +70,12 @@
         </button>
     </form>
 
-    {{-- @if ($poster == "N/A") --}}
-        {{-- <img class="card-img-top movie-poster" src="{{asset('poster_money-heist.jpg')}}" alt="poster" style="object-fit: cover;  height: 30rem"> --}}
-    {{-- @else --}}
+    {{var_dump($poster)}}
+    @if ($poster == null)
+        {{-- <img class="card-img-top movie-poster" src="{{asset('poster_no-data-found.png')}}" alt="poster" style="object-fit: cover;  height: 30rem"> --}}
+    @else
         <img class="card-img-top movie-poster" style="object-fit: cover;  height: 30rem" src="{{ $poster }}" alt="Card image cap">
-    {{-- @endif --}}
+    @endif
 
     <div class="card-body movie-title">
         <h5 style="font-weight: bold;">

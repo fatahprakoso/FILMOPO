@@ -22,4 +22,21 @@ class MovieGenre extends Model
     {
         return $this->belongsTo('App\Models\Genre');
     }
+
+    public static function getMovieGenre($movie_id, $genre_id)
+    {
+        return MovieGenre::where('movie_id', $movie_id)->where('genre_id', $genre_id)->first();
+    }
+
+    public static function addMovieGenres($movie_id, $genres_id)
+    {
+        foreach ($genres_id as $key => $genre_id) {
+            if (MovieGenre::getMovieGenre($movie_id, $genre_id) == null) {
+                MovieGenre::create([
+                    'movie_id' => $movie_id,
+                    'genre_id' => $genre_id
+                ]);
+            }
+        }
+    }
 }
