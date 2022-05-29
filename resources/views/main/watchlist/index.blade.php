@@ -24,7 +24,7 @@
             <div class="card mb-3" style="max-width: 1350px; margin: 0 auto; float: none; margin-bottom: 10px;">
                 <div class="row g-0">
                     <div class="first-col col-md-4 bg-warning">
-                        <img src="..." class="img-fluid rounded-start" alt="...">
+                        <img src="{{asset('poster_money-heist.jpg')}}" class="img-fluid rounded-start" alt="...">
                     </div>
                     <div class="sec-col col-md-7">
                         <div class="card-body">

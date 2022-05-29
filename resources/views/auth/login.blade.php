@@ -42,9 +42,39 @@
                 <div class="card" style="border-radius: 1rem;">
                     <div class="col">
                         <div class="row g-1 justify-content-around">
-                            <div class="col-md-5 d-flex poster" style="height: 90vh;">
+                            <!-- <div class="col-md-5 d-flex poster" style="height: 90vh;">
                                 <img src="{{ 'poster_money-heist.jpg' }}" alt="login form" class="img-fluid" style="border-radius: 1rem 1rem; height:100%; object-fit: cover" />
+                            </div> -->
+
+                            <div class="col-md-5 d-flex poster" style="height: 90vh;">
+                                <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                                    <div class="carousel-indicators">
+                                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                                    </div>
+                                    <div class="carousel-inner" style="height: 90vh;">
+                                        <div class="carousel-item active" style="height: 90vh;">
+                                            <img src="{{ 'poster_money-heist.jpg' }}" class="d-block w-100 img-fluid" alt="poster1" style="height: 90vh; border-radius: 1rem 1rem; height:100%; object-fit: cover">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="{{ 'poster_doctor-strange-2.png' }}" class="d-block w-100 img-fluid" alt="poster2" style="height: 90vh; border-radius: 1rem 1rem; height:100%; object-fit: cover">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="{{ 'poster_the-batman.png' }}" class="d-block w-100 img-fluid" alt="poster3" style="height: 90vh; border-radius: 1rem 1rem; height:100%; object-fit: cover">
+                                        </div>
+                                    </div>
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Previous</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Next</span>
+                                    </button>
+                                </div>
                             </div>
+
                             <div class="col d-flex align-items-center justify-content-center">
                                 <div class="  card-body p-4 p-lg-5 text-black d-flex flex-column justify-content-center align-items-center">
 
@@ -82,17 +112,9 @@
                                             </div>
                                             <x-label for="password" :value="__('Password')" />
 
-                                            <!-- Remember Me -->
-                                            <div class="block mt-4">
-                                                <label for="remember_me" class="inline-flex items-center">
-                                                    <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="remember">
-                                                    <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-                                                </label>
-                                            </div>
-
                                             <div class="d-flex flex-column items-center justify-end mt-4">
                                                 <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('register') }}">
-                                                    {{ __('Create account?') }}
+                                                    {{ __('Create an account?') }}
                                                 </a>
 
                                                 <input class="btn btn-primary btn-submit-login" type="submit" value="Submit">
