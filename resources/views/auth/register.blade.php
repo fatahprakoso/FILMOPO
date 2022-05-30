@@ -18,7 +18,7 @@
 
         </style>
 
-        <section class="bg-vanta" style="height: 100%; background-color: #03111f;">
+        <section class="bg-vanta" style="height: 100.01vh; background-color: #03111f;">
             <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
             <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.waves.min.js"></script>
             <script>

@@ -1,6 +1,6 @@
 // require('./bootstrap');
 
-import { offcanvas } from 'bootstrap';
+import { alert, offcanvas } from 'bootstrap';
 /**
  * bootstrap classes:
  * alert, button, carousel, collapse, dropdown, modal, offcanvas, popover,

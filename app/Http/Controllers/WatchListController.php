@@ -11,11 +11,6 @@ use Illuminate\Support\Facades\DB;
 
 class WatchListController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $movies_data = array();
@@ -37,6 +32,8 @@ class WatchListController extends Controller
                 array_push($genres_data, $genre->name);
             }
 
+            $watched = DB::table('watch_lists')->where('movie_id', $value->movie_id)->where('user_id', $user->id)->first()->watched;
+
             array_push($movies_data, [
                 'movie_id' => $value->movie_id,
                 'name' => $value->name,
@@ -45,7 +42,8 @@ class WatchListController extends Controller
                 'poster' => $value->poster,
                 'rated' => $value->rated,
                 'genres' => $genres_data,
-                'actors' => $actors_data
+                'actors' => $actors_data,
+                'watched' => $watched,
             ]);
         }
 
@@ -55,22 +53,6 @@ class WatchListController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         // validating the request
@@ -112,52 +94,36 @@ class WatchListController extends Controller
         User::find($user_id)->movie()->attach($movie_id);
 
         $msg = "Film $request->name berhasil ditambahkan!";
-        return redirect('/watchlist')->with('success', $msg);
+        return redirect('/watchlist')->with('msg', $msg);
     }
 
-    public function delete(Request $request)
+    public function destroy(Request $request)
     {
         $movie = Movie::find($request->id);
         $movie->user()->detach(auth()->user()->id);
 
-        // echo $movie;
         foreach ($movie->user as $user) {
-            if ($user->pivot->movie_id == $movie->movie_id) {
+            if (DB::table('watch_lists')->where('movie_id', $request->id)->where('user_id', auth()->user()->id)->first() != null) {
                 $msg = "Film $movie->name gagal dihapus!";
                 return redirect()->back()->with('msg', $msg);
             }
         }
 
         $msg = "Film $movie->name berhasil dihapus!";
-        return redirect('/watchlist')->with('success', $msg);
+        return redirect('/watchlist')->with('msg', $msg);
     }
 
-    public function destroy($request)
-    {
-        $movie = Movie::find($request->id);
-        $movie->user()->detach(auth()->user()->id);
-
-        echo $movie;
-        foreach ($movie->user as $user) {
-            if ($user->pivot->movie_id == $movie->movie_id) {
-                $msg = "Film $movie->name gagal dihapus!";
-                // return redirect()->back()->with('msg', $msg);
-            }
-        }
-
-        $msg = "Film $movie->name berhasil dihapus!";
-        // return redirect('/watchlist')->with('success', $msg);
-    }
-
-    public function update(Movie $movie, Request $request)
+    public function update(Movie $movie)
     {
         $movie_id = $movie->movie_id;
         $user_id = auth()->user()->id;
-        $status = $request->status;
+        $status = !(DB::table('watch_lists')->where('movie_id', $movie_id)->where('user_id', $user_id)->first()->watched);
 
-        return DB::update(
-            'update watchlist set watched = ? where movie_id = ? and user_id = ?',
+        $updateStatus = DB::update(
+            'update watch_lists set watched = ? where movie_id = ? and user_id = ?',
             [$status, $movie_id, $user_id]
         );
+
+        return redirect('/watchlist');
     }
 }

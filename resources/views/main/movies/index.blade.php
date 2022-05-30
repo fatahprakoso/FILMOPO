@@ -1,6 +1,29 @@
 @extends('layouts.main')
 
 @section('app')
+    @if (Session::has('msg'))
+        <div id="liveAlertPlaceholder" style="position: fixed; z-index:50; top:70px; width:100%"
+            value="{{ Session::get('msg') }}"></div>
+        <script>
+            const alertPlaceholder = document.getElementById('liveAlertPlaceholder')
+            const msg = alertPlaceholder.getAttribute('value')
+
+            function alert(message, type) {
+                const wrapper = document.createElement('div')
+                wrapper.innerHTML = [
+                    `<div class="text-center center-block alert alert-${type} alert-dismissible" role="alert" style="margin: auto; width: 50%">
+                       <div>${message}</div>
+                       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>`
+                ].join('')
+
+                alertPlaceholder.append(wrapper);
+            };
+
+            alert(msg, 'danger')
+        </script>
+    @endif
+
     <x-card-container></x-card-container>
 
     <script>

@@ -1,25 +1,8 @@
-<style>
-    @media only screen and (max-width: 768px) {
-        .cardWatchlist {
-            max-height: 262.08px;
-            object-fit: cover;
-        }
-    }
-
-    @media only screen and (min-width: 769px) {
-        .cardWatchlist {
-            width: 100%;
-            max-height: 262.08px;
-            object-fit: cover;
-        }
-    }
-
-</style>
-
-<div class="card mb-3" style="width: 1350px; margin: 0 auto; float: none; margin-bottom: 10px;">
+<div class="card mb-3" style="width: 92.5vw; margin: 0 auto; float: none; margin-bottom: 10px;">
     <div class="row g-0">
-        <div class="first-col col-md-4 bg-warning">
-            <img src="{{ $poster }}" class="img-fluid rounded-start cardWatchlist">
+        <div class="first-col col-md-4 bg-warning" style="min-height: 19rem; height: 19rem;">
+            <img src=" {{ $poster }}" class="img-fluid rounded-start cardWatchlist"
+                style="height: 100%; width:100%; object-fit: cover">
         </div>
         <div class="sec-col col-md-7">
             <div class="card-body">
@@ -30,7 +13,13 @@
                             {{ $name }} ({{ $releasedt }})</h5>
                     </div>
                     <div class="form-check form-switch">
-                        <input class="form-check-input watched-btn" type="checkbox" id="flexSwitchCheckDefault">
+                        @if ($watched)
+                            <input class="form-check-input watched-btn" type="checkbox" role="switch"
+                                id="flexSwitchCheckDefault" checked>
+                        @else
+                            <input class="form-check-input watched-btn" type="checkbox" role="switch"
+                                id="flexSwitchCheckDefault">
+                        @endif
                         <input class="id" type="hidden" name="id" value="{{ $movieid }}">
                         <label class="form-check-label" for="flexSwitchCheckDefault">Watched</label>
                     </div>
@@ -55,7 +44,7 @@
                     </div>
                 </div>
 
-                <div class="container">
+                <div class="container" style="margin-top: 2vh">
                     <div class="row text-center mx-3 gap-4">
                         {{ $genres }}
                     </div>

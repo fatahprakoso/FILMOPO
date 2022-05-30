@@ -18,7 +18,7 @@
 
         </style>
 
-        <section class="bg-vanta" style="height: 100.01vh; background-color: #03111f;">
+        <section class="bg-vanta" style="height: 100%; background-color: #03111f;">
             <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
             <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.waves.min.js"></script>
             <script>
@@ -39,7 +39,7 @@
                 })
             </script>
 
-            <div class="container py-5">
+            <div class="container py-5 animate__backInDown animate__animated ">
                 <div class="card" style="border-radius: 1rem;">
                     <div class="col">
                         <div class="row g-1 justify-content-around">
@@ -59,19 +59,21 @@
                                         <button type="button" data-bs-target="#carouselExampleIndicators"
                                             data-bs-slide-to="2" aria-label="Slide 3"></button>
                                     </div>
-                                    <div class="carousel-inner" style="height: 85vh;">
+                                    <div class="carousel-inner" style="height: 100%;">
                                         <div class="carousel-item active" style="object-fit: cover;">
                                             <img src="{{ 'poster_money-heist.jpg' }}" class="d-block w-100 img-fluid"
-                                                alt="poster1" style="border-radius: 1rem 1rem; object-fit: cover;">
+                                                alt="poster1"
+                                                style="border-radius: 1rem;height:100%; object-fit: cover;overflow: hidden">
                                         </div>
                                         <div class="carousel-item">
                                             <img src="{{ 'poster_doctor-strange-2.png' }}"
                                                 class="d-block w-100 img-fluid" alt="poster2"
-                                                style="border-radius: 1rem 1rem; object-fit: cover;">
+                                                style="border-radius: 1rem;height:100%; object-fit: cover;overflow: hidden">
                                         </div>
                                         <div class="carousel-item">
                                             <img src="{{ 'poster_the-batman.png' }}" class="d-block w-100 img-fluid"
-                                                alt="poster3" style="border-radius: 1rem 1rem; object-fit: cover;">
+                                                alt="poster3"
+                                                style="border-radius: 1rem;height:100%; object-fit: cover; overflow: hidden">
                                         </div>
                                     </div>
                                     <button class="carousel-control-prev" type="button"

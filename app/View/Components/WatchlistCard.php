@@ -12,8 +12,9 @@ class WatchlistCard extends Component
     public $releasedt;
     public $poster;
     public $rated;
+    public $watched;
 
-    public function __construct($movieid, $name, $length, $releasedt, $poster, $rated)
+    public function __construct($movieid, $name, $length, $releasedt, $poster, $rated, $watched)
     {
         $this->movieid = $movieid;
         $this->name = $name;
@@ -21,6 +22,7 @@ class WatchlistCard extends Component
         $this->releasedt = $releasedt;
         $this->poster = $poster;
         $this->rated = $rated;
+        $this->watched = $watched;
     }
 
     /**
